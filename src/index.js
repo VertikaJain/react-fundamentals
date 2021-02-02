@@ -9,13 +9,14 @@ function BookList() {
   return (
     <section className="booklist">
       <Book />
-      <Book />
-      <Book />
-      <Book />
-      <Book />
     </section>
   );
 }
+
+// global variables
+const author = 'Barack Obama'
+const img = "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1600357110l/55361205._SY475_.jpg"
+const title = "A Promised Land"
 
 // Nested Components
 const Book = () => {
@@ -28,10 +29,10 @@ const Book = () => {
   )
 };
 
-const Image = () => <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1600357110l/55361205._SY475_.jpg"></img>
-const Title = () => <h1>A Promised Land</h1>
+const Image = () => <img src={img} /> //JS in JSX statements
+const Title = () => <h1>{title}</h1>
 // Inline CSS overwrites the corresponding properties defined in the imported CSS file.
-const Author = () => <h4 style={{ color: 'grey', fontSize: '0.75rem', marginTop: '0.45rem' }}>Barack Obama</h4>
+const Author = () => <h4 style={{ color: 'grey', fontSize: '0.75rem', marginTop: '0.45rem' }}>{author}</h4>
 
 /* // Using createElement for each HTML component-> Not recommended
 const Greeting = () => {
