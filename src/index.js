@@ -6,39 +6,43 @@ import "./index.css"
 
 // global variables
 
-const firstBook = {
+const books = [{
+  id: 1,
   author: 'Barack Obama',
   img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1600357110l/55361205._SY475_.jpg",
   title: "A Promised Land"
-}
-
-const secondBook = {
-  author: ' Julia Kelly',
+}, {
+  id: 2,
+  author: 'Julia Kelly',
   img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1609080610l/54304262.jpg",
   title: "The Last Garden in England"
-}
+}, {
+  id: 3,
+  author: 'Brit Bennett',
+  img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1577090827l/51791252._SX318_SY475_.jpg",
+  title: "The Vanishing Half"
+}]
 
 // Component names need to be capitalized in React, or they won't work.
 function BookList() {
   return (
     <section className="booklist">
-      <Book author={firstBook.author} img={firstBook.img} title={firstBook.title} >
-        <p>A  riveting, deeply personal account of history in the making, from the president who inspired us to believe in the power of democracy. </p>
-      </Book>
-      <Book author={secondBook.author} img={secondBook.img} title={secondBook.title} />
+      {books.map(book => {
+        return <Book key={book.id} book={book} />
+      })}
     </section>
   );
 }
 
 // Nested Components
-const Book = ({ author, img, title, children }) => {
+const Book = (props) => {
+  let { author, img, title } = props.book
   return (
     <article className="book">
       <img src={img} alt="image here" />
       <h1>{title}</h1>
       {/* Inline CSS overwrites the corresponding properties defined in the imported CSS file. */}
       <h4 style={{ color: 'grey', fontSize: '0.75rem', marginTop: '0.45rem' }}>{author}</h4>
-      {children}
     </article>
   )
 };
