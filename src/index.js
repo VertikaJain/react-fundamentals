@@ -43,9 +43,8 @@ const clickComplexHandler = (message) => {
 
 // Nested Components
 const Book = ({ author, img, title }) => {
-  // let { author, img, title } = props
   return (
-    <article className="book">
+    <article className="book" onMouseOver={() => console.log(title)}>
       <img src={img} alt="" />
       <h1 onClick={() => { console.log("title is : ", title) }}>{title}</h1> {/* Inline function example */}
       {/* Inline CSS overwrites the corresponding properties defined in the imported CSS file. */}
